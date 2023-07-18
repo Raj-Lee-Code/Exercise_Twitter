@@ -1,0 +1,32 @@
+.Card {
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(153, 153, 153, 0.497);
+    border-radius: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    width: 33vw;
+    text-align: center;
+}
+
+.title {
+    color:black;
+    font-size: 24px;
+}
+
+.moreButton {
+    width: 30px;
+    float:right;
+
+}
+.moreInfo {
+    width: 25px;
+    float:left;
+
+}
+.moreButton:hover {
+    cursor: pointer;
+}
