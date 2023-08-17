@@ -23,44 +23,25 @@ const CreatePost = ({token}) => {
     async function getFriendss(){
         const {data} = await supabase
         .from('Friends')
-        .select('friend_email')
-        .eq('user',token.user.id)
-        console.log(data)
+        .select('email')
+        .or(`user.eq.${token.user.id}`)
         setFriends(data)
     }
 
     async function emailer(){
-        // let senders_data = []
-        
-        // for (let i = 0; i<friends.length; i++){
-        //     senders_data.push(friends[i].friend_email)
-        // }
-        
-        // let email_data = {
-        //     "title": "Your friend just made a workout post!",
-        //     "recipients": senders_data,
-        //     "message": `Your friend,${token.user.user_metadata.user_name} , just posted a workout, go give them an upvote!`
-        // }
-
-        // console.log(email_data)
-        
-        // const response = await fetch(url, {
-            
-        //     body: JSON.stringify(email_data),
-        //     mode: 'no-cors',
-        //     headers:{  
-        //         "Content-Type": "application/json",
-        //         "X-Api-key": 
-        //     },
-        //     method: 'POST'
-        // })
-        let data = {
-            "title": "New Activity!",
-            "recipients": ["rajman987@gmail.com", "rajan.lee97@gmail.com", "fjnsd79@gmail.com"],
-            "message":"Your friend just posted a activity, go and give them a like!"
-          }
-          //const api_key = process.env.REACT_APP_API_KEY
-          let sending = JSON.stringify(data)
+         
+        let senders_data = [];
+         for await (const friend of friends){
+             senders_data.push(friend.email)
+         }
+         
+         let email_data = {
+             "title": "Your friend just made a workout post!",
+             "recipients": senders_data,
+             "message": `Your friend,${token.user.user_metadata.user_name} , just posted a workout, go give them an upvote!`
+         }
+          
+          let sending = JSON.stringify(email_data)
           const res = await fetch("https://vmufy6xes4.execute-api.us-east-1.amazonaws.com/default/Lambda_SES_Microservice", {
             body: sending,
             headers: {
@@ -75,16 +56,15 @@ const CreatePost = ({token}) => {
     async function getPosts(){
         await supabase
         .from('Posts')
-        .insert({Title: Posts.Title, Author: Posts.Author, Description: Posts.Description, Age: Posts.Age, email:Posts.email})
+        .insert({Title: Posts.Title, Author: Posts.Author, Description: Posts.Description, email:Posts.email})
         .select();
         window.location = "/HomePage";
     }
 
     const createPost = async (event) => {
         event.preventDefault();
-        const getFriends = await getFriendss()
-        await console.log(friends)
-        const sendEmail =  await emailer()
+        await getFriendss()
+        await emailer()
         await getPosts()
     }
 

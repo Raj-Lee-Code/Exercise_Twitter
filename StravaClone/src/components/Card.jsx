@@ -16,7 +16,6 @@ const Card = (props) =>  {
   let author = props.author
   let title =props.title
   let description = props.description
-  let age = props.age
   let time = props.time
   let upvotes = props.upvotes
   let dateformat = new Date(time)
@@ -35,7 +34,7 @@ const Card = (props) =>  {
   return (
       <div className="Card">
         {
-          author == sessToken.user.user_metadata.user_name?<Link to={'/edit/'+ props.id} state={{Age:age, Title:title, Author:author, Description:description}}>
+          author == sessToken.user.user_metadata.user_name?<Link to={'/edit/'+ props.id} state={{Title:title, Author:author, Description:description}}>
           <img className="moreButton" alt="edit button" src={more} />
         </Link> :''
         }
@@ -43,7 +42,7 @@ const Card = (props) =>  {
           <p>{"Upvotes: "+ upvotes}</p>
           <p className="author">{"Created by " + props.author}</p>
           <p>{"Date created: "+dateformat}</p>
-          <Link to={'/info/'+ props.id} state={{Age:age, Title:title, Author:author, Description:description, Upvotes:upvotes}}>
+          <Link to={'/info/'+ props.id} state={{Title:title, Author:author, Description:description, Upvotes:upvotes}}>
             <button> View Post </button>
           </Link>
           <button onClick={handleUpvote}>Upvote</button>
