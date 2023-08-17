@@ -25,10 +25,10 @@ const EditPost = ({data}) => {
 
         await supabase
         .from('Posts')
-        .update({Title: Posts.Title, Author: Posts.Author, Description: Posts.Description})
+        .update({Title: Posts.Title, Description: Posts.Description})
         .eq('id', id);
         
-        window.location = "/";
+        window.location = "/HomePage";
     }
     const deletePost = async(event) =>{
         event.preventDefault();
@@ -38,7 +38,7 @@ const EditPost = ({data}) => {
         .delete()
         .eq('id',id);
 
-        window.location="/"
+        window.location="/HomePage"
     }
 
     return (
@@ -46,10 +46,6 @@ const EditPost = ({data}) => {
             <form onSubmit={updatePost}>
                 <label for="title">Title</label> <br />
                 <input type="text" id="title" name="Title" defaultValue={location.state.Title} onChange={handleChange} />
-                <br />
-                <br/>
-                <label for="author">Author</label><br />
-                <input type="text" id="author" name="Author" defaultValue={location.state.Author} onChange={handleChange}/>
                 <br />
                 <br/>
                 <label for="description">Description</label><br />
