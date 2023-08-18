@@ -27,7 +27,7 @@ const HomePage = ({token}) => {
             email: formData.email,
             password: formData.password,
           })
-        console.log(data)
+       
           if (error) throw error
           //alert('Please check your email for a verification link!')
         }
@@ -41,10 +41,9 @@ const HomePage = ({token}) => {
       }
     return (
         <div className="header">
-        <h1>Strava Clone!</h1>
+        <h1>Lets Exercise Together!</h1>
         <h2>Hello, {token.user.user_metadata.user_name} </h2>
-        <button>Search for friends</button>
-        <button>My Friends</button>
+        <Link to="/MyFriends"><button>My Friends</button></Link>
         <Link to="/new"><button className='headerBtn'>Create a Post</button></Link> 
         <button onClick={handleLogout}>Logout</button>
 

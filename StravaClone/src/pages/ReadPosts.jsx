@@ -26,7 +26,7 @@ const ReadPosts = ({token}) => {
                 
                 posts && posts.length > 0 ?
                 posts.map((posts,index) => 
-                   <Card time={posts.created_at} id={posts.id} title={posts.Title} author={posts.Author} description={posts.Description} age={posts.Age} upvotes={posts.Upvotes} sessionToken = {token}/>
+                   <Card time={posts.created_at} id={posts.id} title={posts.Title} author={posts.Author} description={posts.Description} upvotes={posts.Upvotes} sessionToken = {token}/>
                 ) : <h2>{'No Posts yet'}</h2>
             }
         </div>  

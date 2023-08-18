@@ -38,7 +38,7 @@ const loginPage = ({setToken}) => {
 
     return (
         <div className="header">
-        <h1>Strava Clone!</h1>
+        <h1>Lets Exercise Together!</h1>
         <h2>Please login!</h2>
         <form onSubmit={handleSubmit}>
 

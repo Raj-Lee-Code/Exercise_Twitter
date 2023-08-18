@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { supabase } from '../client';
+import { Link } from 'react-router-dom'
 
 const SignUp = () => {
 
@@ -15,7 +16,12 @@ const SignUp = () => {
           }
         })
       }
-
+      async function addUser() {
+        await supabase
+        .from('users')
+        .insert({user_email: formData.email, user_name: formData.username})
+        .select();
+    }
       async function handleSubmit(event){
         event.preventDefault()
         try{
@@ -30,12 +36,15 @@ const SignUp = () => {
               }
             }
           )
+          
           if (error) throw error
           alert('Please check your email for a verification link!')
+          await addUser()
         }
         catch (error){
           alert(error)
         }
+        
       }
 
     return (
@@ -62,6 +71,7 @@ const SignUp = () => {
             onChange={handleChange}
           />
           <button type ='submit'>Sign Up Now!</button>
+          <Link to="/"><button className='headerBtn'>Go back to Login page</button></Link>
         </form>
       </div>
     )

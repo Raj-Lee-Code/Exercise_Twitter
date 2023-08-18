@@ -23,24 +23,24 @@ const CreatePost = ({token}) => {
     async function getFriendss(){
         const {data} = await supabase
         .from('Friends')
-        .select('email')
-        .or(`user.eq.${token.user.id}`)
+        .select('friend_email')
+        .or(`user.eq.${token.user.email}`)
         setFriends(data)
     }
 
     async function emailer(){
-         
+
         let senders_data = [];
          for await (const friend of friends){
-             senders_data.push(friend.email)
+             senders_data.push(friend.friend_email)
          }
-         
+
          let email_data = {
              "title": "Your friend just made a workout post!",
              "recipients": senders_data,
              "message": `Your friend,${token.user.user_metadata.user_name} , just posted a workout, go give them an upvote!`
          }
-          
+
           let sending = JSON.stringify(email_data)
           const res = await fetch("https://vmufy6xes4.execute-api.us-east-1.amazonaws.com/default/Lambda_SES_Microservice", {
             body: sending,

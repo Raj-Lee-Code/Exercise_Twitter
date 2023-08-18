@@ -34,21 +34,20 @@ const Card = (props) =>  {
 
   return (
       <div className="Card">
-        <ReactTooltip anchorSelect="#editIcon" place="top"> Edit page!</ReactTooltip >
+        <ReactTooltip anchorSelect="#editIcon" place="top"> Edit Post</ReactTooltip >
         {
           
           author == sessToken.user.user_metadata.user_name?
-        
-          
+
           <Link to={'/edit/'+ props.id} state={{Title:title, Author:author, Description:description}}>
           <img className="moreButton" alt="edit button" src={more} id='editIcon' />
-          </Link>  
-           :''
+          </Link>  :''
         }
-          <h2 className="title">{props.title}</h2>
-          <p>{"Upvotes: "+ upvotes}</p>
-          <p className="author">{"Created by " + props.author}</p>
-          <p>{"Date created: "+dateformat}</p>
+          
+          <h2 className="title">{title}</h2>
+          <p className='info'>{"Upvotes: "+ upvotes}</p>
+          <p className='info'>{"Created by " + props.author}</p>
+          <p className='info'>{"Date created: "+dateformat}</p>
           <Link to={'/info/'+ props.id} state={{Title:title, Author:author, Description:description, Upvotes:upvotes}}>
             <button> View Post </button>
           </Link>

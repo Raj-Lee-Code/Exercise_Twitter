@@ -12,14 +12,15 @@
 
 .title {
     color:red;
-    padding-left:30px;
+    text-align: center;
     font-size: 24px;
 }
-
+.info{
+    text-align: center;
+}
 .moreButton {
     width: 30px;
     float:right;
-
 }
 .moreInfo {
     width: 25px;
@@ -28,4 +29,8 @@
 }
 .moreButton:hover {
     cursor: pointer;
+}
+
+.deleteButton {
+    color: red;
 }
