@@ -39,6 +39,7 @@ const HomePage = ({token}) => {
         localStorage.removeItem("token");
         window.location = "/"
       }
+      
     return (
         <div className="header">
         <h1>Lets Exercise Together!</h1>

@@ -3,7 +3,7 @@ import FriendCard from '../components/FriendCard.jsx';
 import { supabase } from '../client'
 
 const ReadFriends = ({token}) => {
-
+    
     const [friends, setFriends] = useState([]);
     const fetchFriends = async () => {
         const {data} = await supabase

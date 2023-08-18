@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { supabase } from '../client';
 import { Link, useNavigate } from 'react-router-dom'
 import ReadFriends from './ReadFriends';
@@ -10,6 +10,7 @@ const MyFriends = ({token}) => {
     const [formData,setFormData] = useState({
         friendEmail:''
       })
+    const [foundfriend,setFriend] = useState()
 
     function handleChange(event){
         setFormData((prevFormData)=>{
@@ -20,27 +21,29 @@ const MyFriends = ({token}) => {
         })
       }
 
+      async function getUser (friend_email){
+        
+        const {data} = await supabase
+        .from('users')
+        .select('*')
+        .eq('user_email', friend_email);
+        
+        setFriend(data)
+
+      }
+
       async function handleSubmit(event){
         event.preventDefault()
-        try{
-          const { data, error } = await supabase.auth.signUp(
-            {
-              email: formData.email,
-              password: formData.password,
-              options: {
-                data: {
-                  user_name: formData.username,
-                }
-              }
-            }
-          )
-          if (error) throw error
-          alert('Please check your email for a verification link!')
-        }
-        catch (error){
-          alert(error)
-        }
-      }
+        
+        await getUser(formData.friendEmail)
+        
+        await supabase
+        .from('Friends')
+        .insert({user: token.user.email, friend_name: foundfriend[0].user_name, friend_email: foundfriend[0].user_email})
+        .select()
+        window.location = "/HomePage";
+
+    }
 
     return (
         <div className="header">

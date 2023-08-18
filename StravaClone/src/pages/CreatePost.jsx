@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import './CreatePost.css'
 import { supabase } from '../client'
 import { Link } from 'react-router-dom'
@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 let url = 'https://vmufy6xes4.execute-api.us-east-1.amazonaws.com/default/Lambda_SES_Microservice';
 
 const CreatePost = ({token}) => {
-    const [Posts, setPost] = useState({Title:"", Author:token.user.user_metadata.user_name, Descritption:"", Age:0, email:token.user.email})
+    const [Posts, setPost] = useState({Title:"", Author:token.user.user_metadata.user_name, Descritption:"", email:token.user.email})
     const [friends, setFriends] = useState([]);
 
     const handleChange = (event) => {
@@ -19,6 +19,9 @@ const CreatePost = ({token}) => {
             }
         })
     }
+    useEffect(() => {
+        getFriendss()
+    }, []);
 
     async function getFriendss(){
         const {data} = await supabase
@@ -63,7 +66,6 @@ const CreatePost = ({token}) => {
 
     const createPost = async (event) => {
         event.preventDefault();
-        await getFriendss()
         await emailer()
         await getPosts()
     }
