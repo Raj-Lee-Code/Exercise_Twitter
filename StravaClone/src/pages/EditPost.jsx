@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useLocation} from 'react-router-dom'
 import './EditPost.css'
 import { supabase } from '../client'
-
+import { Link } from 'react-router-dom'
 
 const EditPost = ({data}) => {
     
@@ -43,6 +43,7 @@ const EditPost = ({data}) => {
 
     return (
         <div>
+            <Link to="/HomePage"><button className='headerBtn'>Go back home</button></Link>
             <form onSubmit={updatePost}>
                 <label for="title">Title</label> <br />
                 <input type="text" id="title" name="Title" defaultValue={location.state.Title} onChange={handleChange} />

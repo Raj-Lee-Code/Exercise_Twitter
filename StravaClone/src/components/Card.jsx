@@ -4,6 +4,7 @@ import './Card.css'
 import { Link, useLocation } from 'react-router-dom'
 import more from './more.png'
 import { supabase } from '../client'
+import { Tooltip as ReactTooltip } from 'react-tooltip'
 
 const Card = (props) =>  {
   
@@ -33,10 +34,16 @@ const Card = (props) =>  {
 
   return (
       <div className="Card">
+        <ReactTooltip anchorSelect="#editIcon" place="top"> Edit page!</ReactTooltip >
         {
-          author == sessToken.user.user_metadata.user_name?<Link to={'/edit/'+ props.id} state={{Title:title, Author:author, Description:description}}>
-          <img className="moreButton" alt="edit button" src={more} />
-        </Link> :''
+          
+          author == sessToken.user.user_metadata.user_name?
+        
+          
+          <Link to={'/edit/'+ props.id} state={{Title:title, Author:author, Description:description}}>
+          <img className="moreButton" alt="edit button" src={more} id='editIcon' />
+          </Link>  
+           :''
         }
           <h2 className="title">{props.title}</h2>
           <p>{"Upvotes: "+ upvotes}</p>
