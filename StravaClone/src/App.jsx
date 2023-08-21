@@ -7,7 +7,6 @@ import ReadFriends from './pages/ReadFriends';
 import CreatePost from './pages/CreatePost';
 import PostInfo from './pages/PostInfo';
 import EditPost from './pages/EditPost';
-import { Link } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import SignUp from './pages/SignUp';
 import HomePage from './pages/Homepage';

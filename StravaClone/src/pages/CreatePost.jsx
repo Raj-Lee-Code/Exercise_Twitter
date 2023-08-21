@@ -66,7 +66,10 @@ const CreatePost = ({token}) => {
 
     const createPost = async (event) => {
         event.preventDefault();
-        await emailer()
+        try{
+            await emailer()
+        }catch{"No friends found"}
+        
         await getPosts()
     }
 

@@ -55,7 +55,16 @@ const EditPost = ({data}) => {
                 <br/>
                 <br/>
                 <input type="submit" value="Submit" />
-                <button className="deleteButton" onClick={deletePost}>Delete</button>
+                <button className="deleteButton" onClick={() =>{
+                    const confirmBox = window.confirm(
+                        "Do you really want to delete this post?"
+                    )
+                    if (confirmBox){
+                        deletePost(event)
+                        //window.location = "/HomePage";
+                    }
+                }
+            }>Delete</button>
             </form>
         </div>
     )
