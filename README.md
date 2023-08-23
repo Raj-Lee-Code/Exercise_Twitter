@@ -1,3 +1,3 @@
-# Strava_clone
+# Excerise_twitter
 
-A strava clone desktop app in React
+A Twitter clone focusing on posting about your exercises
