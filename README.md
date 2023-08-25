@@ -1,13 +1,13 @@
-# Exercise_twitter
+# Twitter_clone
 
-A Twitter clone focusing on posting about your exercises. Users can login with an account, post, view, edit and delete their own posts as well as add friends to see their posts. 
+A Twitter clone letting users log in with an account, post, view, edit, and delete their own posts as well as add friends to see their posts. 
 
 ## Built With
 - Javascript
 - React.JS
 - SupaBase (Postgre SQL)
 
-To Start App: Clone the git repository and then run "npm run dev" this will create a local server using VITE.
+To Start App: Clone the git repository and then run "npm run dev" This will create a local server using VITE.
 
 ```
 git clone https://github.com/Raj-Lee-Code/CS361_Microservice.git
