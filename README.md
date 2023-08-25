@@ -21,6 +21,18 @@ npm run dev
 - add ability to like comments
 
 
+# Screenshots of app
+- Sign-in page
+![Sign in page](image.png)
+
+- Home page
+![HomePage](image-1.png)
+
+- View and Add friends
+![Friends Page](image-2.png)
+
+- View posts
+![View post](image-3.png)
 
 
 
