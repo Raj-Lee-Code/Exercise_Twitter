@@ -10,7 +10,7 @@ A Twitter clone letting users log in with an account, post, view, edit, and dele
 To Start App: Clone the git repository and then run "npm run dev" This will create a local server using VITE.
 
 ```
-git clone https://github.com/Raj-Lee-Code/CS361_Microservice.git
+git clone https://github.com/Raj-Lee-Code/Twitter_Clone.git
 
 npm run dev
 ```
